@@ -1,10 +1,15 @@
 import discord
 import env
 from discord.ext import commands
+import random
+import time
+import os
+import datetime
+from collections import Counter
 
-
+client=discord.AutoShardedClient(shard_count=1)
 client = commands.Bot(command_prefix='.', case_insensitive=True)
-
+client.remove_command('help')
 
 @client.event
 async def on_ready():
@@ -13,15 +18,23 @@ async def on_ready():
 @client.command()
 async def restart(ctx):
     embed = discord.Embed(
-      title='Reloading commands', description='This can take 6 seconds or more', colour=random.randint(0, 0xFFFFFF))
+      title='Restarting..', description='', colour=random.randint(0, 0xFFFFFF))
   
     m = await ctx.send(embed=embed)
-    os.system("python run.py")
+    os.system("python restart.py")
     
     time.sleep(0.2) # 200ms to CTR+C twice
 
-@client.command()
-async def ping(ctx):
-    await ctx.send(f"{len(client.latency * 1000)}")
+
+
+
+
+extensions = ['cogs.ping', 'cogs.eval']
+
+
+if __name__ == '__main__':
+    for ext in extensions:
+        client.load_extension(ext)
+
 
 client.run(env.TOKEN)
