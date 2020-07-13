@@ -82,5 +82,8 @@ class Eval(commands.Cog):
                 await ctx.send(f'```py\n{value}{ret}\n```')
 
 def setup(bot):
-    bot.add_cog(Eval(bot))
-    print("Loaded eval.py")
+    try:    
+        bot.add_cog(Eval(bot))
+        print("Loaded eval.py")
+    except Exception as e:
+        print(f"Error loading eval.py: {e}")

@@ -29,7 +29,7 @@ async def restart(ctx):
 
 
 
-extensions = ['cogs.ping', 'cogs.eval']
+extensions = ['cogs.ping', 'cogs.eval', 'cogs.cogs', 'cogs.radio']
 
 
 if __name__ == '__main__':
