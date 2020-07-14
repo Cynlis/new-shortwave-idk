@@ -10,7 +10,7 @@ class Cogs(commands.Cog):
         
 
     
-    extensions = ['cogs.ping', 'cogs.eval', 'cogs.cogs', 'cogs.radio']
+    extensions = ['cogs.ping', 'cogs.eval', 'cogs.cogs', 'cogs.help', "cogs.music"]
     
     @commands.group(name='reload', hidden=True, invoke_without_command=True)
     @commands.is_owner()
