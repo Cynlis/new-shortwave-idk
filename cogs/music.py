@@ -60,22 +60,20 @@ class Music(commands.Cog):
     async def play(self, ctx, *, video: str):
         embed = discord.Embed(title=f'', description=f"Please wait..", colour=0x2f3136)
         m = await ctx.send(embed=embed)
-        await asyncio.sleep(1)
-        await m.delete()
         channel = ctx.author.voice.channel
         voice = get(self.bot.voice_clients, guild=ctx.guild)
         song = Music.search(ctx.author.mention, video)
-        await ctx.channel.purge(limit=1)
-
+        await m.delete()
         if voice and voice.is_connected():
             await voice.move_to(channel)
         else:
-            voice = await channel.connect()     
-
+            voice = await channel.connect()    
         if not voice.is_playing():
             self.song_queue[ctx.guild] = [song]
             self.message[ctx.guild] = await ctx.send(embed=song['embed'])
             voice.play(FFmpegPCMAudio(song['source'], **Music.FFMPEG_OPTIONS), after=lambda e: self.play_next(ctx))
+            voice.source = discord.PCMVolumeTransformer(voice.source)
+            voice.source.volume = 0.99 
             voice.is_playing()
         else:
             self.song_queue[ctx.guild].append(song)
@@ -119,6 +117,8 @@ class Music(commands.Cog):
             del self.song_queue[ctx.guild][num]
             await ctx.channel.purge(limit=1)
             await self.edit_message(ctx)
+
+
 
 
 def setup(bot):

@@ -2,6 +2,9 @@ from discord.ext import commands
 import asyncio
 import traceback
 import discord
+from discord.ext.commands import Cog
+from discord.ext.commands import CheckFailure
+from discord.ext.commands import command, has_permissions
 import inspect
 import textwrap
 import importlib
@@ -18,6 +21,8 @@ import traceback
 import datetime
 import discord
 import logger
+from uptime import uptime
+import dualapi
 
 class Eval(commands.Cog):
     def __init__(self, bot):
@@ -32,6 +37,9 @@ class Eval(commands.Cog):
 
         # remove `foo`
         return content.strip('` \n')
+
+
+    
 
     @commands.is_owner()
     @commands.command(pass_context=True, hidden=True, name='eval')
@@ -80,6 +88,13 @@ class Eval(commands.Cog):
             else:
                 self._last_result = ret
                 await ctx.send(f'```py\n{value}{ret}\n```')
+
+
+
+
+
+
+
 
 def setup(bot):
     try:    

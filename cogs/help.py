@@ -12,9 +12,9 @@ class Help(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(title=f'Help', description=f"", colour=0x2f3136)
-        embed.add_field(name='Misc', value=f"`{ctx.prefix}ping`, `{ctx.prefix}stats`", inline=False)
-        embed.add_field(name='Music', value=f"`{ctx.prefix}Play`, `{ctx.prefix}Skip`, `{ctx.prefix}Pause`, `{ctx.prefix}Resume`, `{ctx.prefix}Stop`", inline=False)
-        embed.add_field(name='Owner', value=f"`{ctx.prefix}Eval`, `{ctx.prefix}Reload`, `{ctx.prefix}Restart`", inline=False)
+        embed.add_field(name='Misc', value=f"`ping`, `stats`, `Covid`, `Radioadd`, `Radionp`, `Captcha`, `Translate`".replace("<@!732176506297778277> ", "."), inline=False)
+        embed.add_field(name='Music', value=f"`Play`, `Skip`, `Pause`, `Resume`, `Stop`, `Volume`, `Radio`".replace("<@!732176506297778277> ", "."), inline=False)
+        embed.add_field(name='Owner', value=f"`Eval`, `Reload`, `Restart`".replace("<@!732176506297778277> ", "."), inline=False)
         await ctx.send(embed=embed)
 
 
