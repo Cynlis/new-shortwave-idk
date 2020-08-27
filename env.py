@@ -1,2 +1,0 @@
-TOKEN = "NzMyMTc2NTA2Mjk3Nzc4Mjc3.Xwwygg.vekHtMZSt9wdOBq8gsS7O3_NBzk"
-extensions = ["cogs.stats", 'cogs.ping', 'cogs.eval', 'cogs.cogs', 'cogs.help', "cogs.radionp", "cogs.radioadd", "cogs.music", "cogs.radio", "cogs.members"]
